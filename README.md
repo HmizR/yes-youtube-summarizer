@@ -25,10 +25,11 @@ Frontend (Next.js)
         ↓
 Backend API (Express.js)
         ↓
-AI Service (Ollama)
+External AI Service (Ollama)
 ```
 
-The system separates presentation, business logic, and AI processing for better scalability and maintainability.
+The AI processing layer is handled by **Ollama**, which runs as an external service.
+The backend communicates with Ollama through its HTTP API.
 
 ---
 
@@ -74,37 +75,168 @@ yes-youtube-summarizer/
 
 ## 🚀 Getting Started
 
-### 1. Clone Repository
+### 📦 Clone Repository
 
 ```bash
 git clone https://github.com/your-username/yes-youtube-summarizer.git
 cd yes-youtube-summarizer
 ```
 
-### 2. Run with Docker
+---
 
-```bash
-docker compose up --build
+## ⚙️ Environment Setup
+
+Both **frontend** and **backend** require environment variables.
+
+Each folder already provides a template:
+
+```
+frontend/.env.example
+backend/.env.example
 ```
 
-The application will start all required services automatically.
+Create your environment files by copying them:
+
+### Backend
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+### Frontend
+
+```bash
+cp frontend/.env.example frontend/.env
+```
+
+Then edit the `.env` files according to your local configuration.
 
 ---
 
-## ⚙️ Environment Variables
+## 🤖 Ollama Setup (Required)
 
-Create `.env` files inside both `frontend/` and `backend/`.
+This project uses **Ollama** as an external AI service.
 
-Example backend configuration:
+You must install and run Ollama locally before starting the application.
+
+### 1. Install Ollama
+
+Download from:
+https://ollama.com
+
+Verify installation:
+
+```bash
+ollama --version
+```
+
+---
+
+### 2. Pull Required Model
+
+Example:
+
+```bash
+ollama pull llama3
+```
+
+(Adjust the model name according to your `.env` configuration.)
+
+---
+
+### 3. Start Ollama Service
+
+```bash
+ollama serve
+```
+
+By default, Ollama runs at:
 
 ```
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=password
-DB_NAME=youtube_summarizer
-OLLAMA_URL=http://ollama:11434
-JWT_SECRET=your_secret_key
+http://localhost:11434
 ```
+
+Make sure your backend `.env` matches this URL:
+
+```
+OLLAMA_URL=http://localhost:11434
+```
+
+---
+
+## 🧪 Development Mode
+
+Development mode enables hot reload and is intended for local development.
+
+Run:
+
+```bash
+docker compose -f docker-compose.dev.yml up --build
+```
+
+This will start:
+
+* Next.js frontend (development server)
+* Express.js backend API
+* Database service
+
+After startup:
+
+* Frontend → http://localhost:3000
+* Backend API → http://localhost:5000
+
+---
+
+## 🚀 Production Mode
+
+Production mode runs optimized containers similar to real deployment.
+
+Run:
+
+```bash
+docker compose up --build -d
+```
+
+This uses:
+
+```
+docker-compose.yml
+```
+
+Production containers run in detached mode for better performance.
+
+---
+
+## 🛑 Stop Services
+
+```bash
+docker compose down
+```
+
+For development setup:
+
+```bash
+docker compose -f docker-compose.dev.yml down
+```
+
+---
+
+## 🐳 Docker Overview
+
+| Mode        | File Used              | Purpose                        |
+| ----------- | ---------------------- | ------------------------------ |
+| Development | docker-compose.dev.yml | Local development & hot reload |
+| Production  | docker-compose.yml     | Optimized deployment           |
+
+---
+
+## ✅ Requirements
+
+Make sure you have installed:
+
+* Docker
+* Docker Compose
+* Git
 
 ---
 
@@ -133,3 +265,7 @@ JWT_SECRET=your_secret_key
 This project is licensed under the MIT License.
 
 ---
+
+## 👨‍💻 Author
+
+Developed by **Hamizan Rifqi Afandi**
