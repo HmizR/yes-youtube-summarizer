@@ -20,16 +20,26 @@ Instead of watching long videos, users can quickly understand key points and ask
 
 ## 🏗️ Architecture
 
-```
+```id="ax19fd"
 Frontend (Next.js)
         ↓
 Backend API (Express.js)
         ↓
-External AI Service (Ollama)
+External Services
+   ├── Ollama (AI Processing)
+   └── MySQL Database
 ```
 
-The AI processing layer is handled by **Ollama**, which runs as an external service.
-The backend communicates with Ollama through its HTTP API.
+Both **Ollama** and **MySQL** currently run as external services.
+
+The backend connects to them via environment configuration.
+
+---
+
+⚠️ **Note**
+
+Currently, the database service is external and must be started manually.
+Future versions may include MySQL as part of Docker Compose for fully automated setup.
 
 ---
 
@@ -159,7 +169,54 @@ http://localhost:11434
 Make sure your backend `.env` matches this URL:
 
 ```
-OLLAMA_URL=http://localhost:11434
+OLLAMA_HOST=http://localhost:11434
+```
+
+---
+
+## 🗄️ Database Setup (MySQL)
+
+The MySQL database is **not yet managed by Docker Compose**.
+
+You must provide your own running MySQL instance.
+
+This may be containerized in future releases.
+
+---
+
+### 1. Install MySQL
+
+Install MySQL locally or run it using Docker manually.
+
+Example (Docker):
+
+```bash
+docker run -d \
+  --name youtube-mysql \
+  -e MYSQL_ROOT_PASSWORD=password \
+  -e MYSQL_DATABASE=youtube_summarizer \
+  -p 3306:3306 \
+  mysql:8
+```
+
+---
+
+### 2. Configure Backend Environment
+
+Update:
+
+```
+backend/.env
+```
+
+Example:
+
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=password
+DB_NAME=youtube_summarizer
 ```
 
 ---
@@ -252,7 +309,6 @@ Make sure you have installed:
 
 ## 📸 Future Improvements
 
-* Video history dashboard
 * Multiple AI model support
 * Summary export (PDF / Markdown)
 * Streaming AI responses
