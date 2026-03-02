@@ -31,7 +31,7 @@ import { useRouter } from 'next/navigation';
 
 // API configuration
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-const WEBSOCKET_URL = process.env.NEXT_WEBSOCKET_URL || 'http://192.168.1.30:5000';
+const WEBSOCKET_URL = process.env.NEXT_WEBSOCKET_URL || 'http://localhost:5000';
 
 const MainContent = () => {
   const router = useRouter();
