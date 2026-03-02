@@ -88,7 +88,7 @@ yes-youtube-summarizer/
 ### 📦 Clone Repository
 
 ```bash
-git clone https://github.com/your-username/yes-youtube-summarizer.git
+git clone https://github.com/HmizR/yes-youtube-summarizer.git
 cd yes-youtube-summarizer
 ```
 
