@@ -775,35 +775,6 @@ const SummaryDetailPage = ({ params }: PageProps) => {
 
             </div>
           </div>
-
-          {/* Related Summaries - Optional, you might want to fetch these from an API */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Related Summaries
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[1, 2, 3].map((item) => (
-                <div
-                  key={item}
-                  className="border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:border-red-300 dark:hover:border-red-700 transition-colors cursor-pointer"
-                >
-                  <div className="flex gap-3">
-                    <div className="flex-shrink-0">
-                      <div className="h-16 w-24 rounded bg-gray-200 dark:bg-gray-700" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-gray-900 dark:text-white line-clamp-2">
-                        Introduction to Neural Networks
-                      </h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                        3:45 • Saved 87%
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </>
