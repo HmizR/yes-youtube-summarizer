@@ -95,7 +95,7 @@ export default function HiwSection() {
 
           {/* Live Demo CTA */}
           <div className="mt-20 text-center">
-            <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-8 bg-gradient-to-r from-red-500/10 via-purple-500/10 to-blue-500/10 dark:from-red-500/5 dark:via-purple-500/5 dark:to-blue-500/5 rounded-2xl border border-red-200 dark:border-red-800">
+            <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-8 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 dark:from-red-500/5 dark:via-purple-500/5 dark:to-blue-500/5 rounded-2xl border border-red-200 dark:border-red-800">
               <div className="text-left">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   Try it yourself - No signup required!
@@ -106,7 +106,7 @@ export default function HiwSection() {
               </div>
               <a
                 href="/demo"
-                className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-red-600 to-purple-600 text-white font-semibold hover:from-red-700 hover:to-purple-700 transition-all whitespace-nowrap"
+                className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:from-red-700 hover:to-purple-700 transition-all whitespace-nowrap"
               >
                 <Zap className="mr-2 h-4 w-4" />
                 Try Live Demo
