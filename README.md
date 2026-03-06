@@ -242,7 +242,7 @@ To get a local copy of this project up and running, follow these steps.
 - **Development mode**
 
   ```bash
-  compose -f docker-compose.dev.yml build
+  docker compose -f docker-compose.dev.yml build
   ```
 
 - **Production mode**
